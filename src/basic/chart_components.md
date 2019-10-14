@@ -1,0 +1,1 @@
+# Draw figure components

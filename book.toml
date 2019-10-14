@@ -1,0 +1,6 @@
+[book]
+authors = ["Hao Hou"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Plotter Developer's Guid"

@@ -1,0 +1,55 @@
+# Getting Started
+
+Let's have a quick walkthrough on how to produce a data plot with Plotters.
+This is an example that plotting the graph of a simple equation `y = sin(x)` to a PNG file.
+
+### Step 1 - Add dependency to `cargo.toml`
+
+In order to use Plotters, add the following line to your `cargo.tmol`
+
+```toml
+[dependencies]
+plotters = "0.2"
+```
+
+Alternatively if you have [cargo-edit](https://github.com/killercup/cargo-edit), use the following command
+to add the dependency
+
+```bash
+cargo add plotters
+```
+
+### Step 2 - Add plotting code
+
+As an example, we provide a minimal code that draws the function graph.
+We can just simply put the following code to the `src/main.rs`
+
+```rust
+use plotters::prelude::*;
+
+fn main() {
+	let root_drawing_area = BitMapBackend::new("result.png", (1024, 768))
+		.into_drawing_area();
+
+	root_drawing_area.fill(&WHITE);
+
+	let chart = ChartBuilder::on(&root_drawing_area)
+		.build_ranged(-3.14..3.14, -1.2..1.2)
+		.unwrap();
+
+	chart.draw(LineSeries::new(
+		(-314..314).map(|x| x as f64 / 100.0).map(|x| (x, x.sin())),
+		&RED
+	)).unwrap();
+}
+```
+
+### Step 3 - Build and run
+
+Use the following command to build and run the example
+
+```bash
+cargo run
+```
+
+And the output will be saved under the current working directory with the file name `result.png`.
