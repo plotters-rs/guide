@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](./intro/introduction.md)
+- [Plotters Developer's Guide](./intro/introduction.md)
 	- [Getting started](./intro/getting_started.md)
 - [Basic plotting](./basic/overview.md)
 	- [Define chart context](./basic/chart_context.md)

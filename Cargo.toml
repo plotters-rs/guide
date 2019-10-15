@@ -1,0 +1,18 @@
+[package]
+name = "plotters-book"
+version = "0.1.0"
+authors = ["Hao Hou <haohou302@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+plotters = "0.2"
+
+[[bin]]
+name = "2_1_chart_context"
+path = "code/2_1_chart_context.rs"
+
+[[bin]]
+name = "2_2_mesh"
+path = "code/2_2_mesh.rs"

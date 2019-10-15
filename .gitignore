@@ -1,2 +1,12 @@
 book/*
 **/.*.sw*
+
+
+#Added by cargo
+#
+#already existing elements are commented out
+
+/target
+**/*.rs.bk
+cargo.lock
+images/*
