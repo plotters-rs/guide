@@ -1,4 +1,4 @@
-# Introduction
+# Plotters Develvoper's Guide
 
 Plotters is a drawing library aimed to expedite the production of high-quality data visualization in Rust.
 
@@ -7,6 +7,16 @@ makes data visualization easy. The Plotters API is designed to be highly flexibl
 
 Plotters is able to render the data visualization as a static image, a GIF animation and even realtime rendering
 backed on WASM, Piston Window or GTK/Cario. 
+
+## Source code in this book
+
+Please go to [Github repository](https://github.com/plotters-rs/guide). All the sample code is under `code`
+directory. 
+To try it yourself, please clone the book repo and use the following command to run examples:
+
+```bash
+cargo run --bin <example-name>
+```
 
 ## API Docs
 
