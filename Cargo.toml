@@ -16,3 +16,19 @@ path = "code/2_1_chart_context.rs"
 [[bin]]
 name = "2_2_mesh"
 path = "code/2_2_mesh.rs"
+
+[[bin]]
+name = "2_3_axis"
+path = "code/2_3_axis.rs"
+
+[[bin]]
+name = "2_4_title"
+path = "code/2_4_title.rs"
+
+[[bin]]
+name = "2_5_lineplot"
+path = "code/2_5_line_plot.rs"
+
+[[bin]]
+name = "2_6_scatter"
+path = "code/2_6_scatter.rs"

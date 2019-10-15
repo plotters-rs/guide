@@ -1,8 +1,7 @@
 use plotters::prelude::*;
 
 fn main() {
-    let root_drawing_area = BitMapBackend::new("images/2.2.png", (600, 400))
-        .into_drawing_area();
+    let root_drawing_area = BitMapBackend::new("images/2.2.png", (600, 400)).into_drawing_area();
 
     root_drawing_area.fill(&WHITE).unwrap();
 
@@ -11,5 +10,4 @@ fn main() {
         .unwrap();
 
     ctx.configure_mesh().draw().unwrap();
-
 }
