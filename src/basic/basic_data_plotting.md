@@ -238,9 +238,17 @@ Result image:
 
 ![2.11.png](../../images/2.11.png)
 
-## Error bar
-## Heatmap
 ## Customized series
+
+Plotters allows you draw abitrary types of series, even the one isn't built into the Plotters crate. 
+Plotters uses a really simple abstraction for a data series: An iterator of drawable elements. 
+Thus if you can make your own series an iterator of drawable element, it's a valid data series and can be
+draw on a figure.
+
+
+
+
+
 ## Mutiple Data Series
 
 By calling `draw_series` multiple time, Plotters is able to produce the multiple series plot. 

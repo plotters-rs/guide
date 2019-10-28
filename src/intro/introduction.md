@@ -18,6 +18,13 @@ To try it yourself, please clone the book repo and use the following command to 
 cargo run --bin <example-name>
 ```
 
+### FAQ List
+
+1. Why the example just exits without any figure poping up?
+
+You should be table to find the output under `images` directory under the user's guide repository. 
+The filename for the output is the defined in the example code. 
+
 ## API Docs
 
 This book is a developer's guide for Plotters. You may also want the API reference, please go to [docs.rs](https://docs.rs/plotters).
