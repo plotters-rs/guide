@@ -2,12 +2,12 @@
 
 In this section, let's use Plotters to produce different types of Plotting.
 Generally speaking, the API `ChartContext::draw_series` provides the functionality
-to draw any types of chart. In the following parts, let's dicuss how to use it to 
+to draw any types of chart. In the following parts, let's discuss how to use it to 
 render different types of plots.
 
 ## Line series
 
-The following code demostrate how to draw a line series with Plotters
+The following code demonstrate how to draw a line series with Plotters
 
 ```rust
 use plotters::prelude::*;
@@ -38,8 +38,8 @@ It should produce the following image
 
 ## Scatter Plot
 
-The following code demostrate how we can crate a scatter plot and use different pointing elements.
-In the example, we use `Circle` and `TriagnleMarker` pointing element for two different series.
+The following code demonstrate how we can crate a scatter plot and use different pointing elements.
+In the example, we use `Circle` and `TriangleMarker` pointing element for two different series.
 
 In this example, we assume there are `DATA1` and `DATA2` defined. See the source for the details.
 
@@ -78,7 +78,7 @@ And this will produce the following image.
 
 ## Area chart
 
-The following demo demostrate how we can draw an area chart.
+The following demo demonstrate how we can draw an area chart.
 
 ```rust
 use plotters::prelude::*;
@@ -116,13 +116,13 @@ Result image:
 
 ## Histogram
 
-In practise, the histogram can be two things:
+In practice, the histogram can be two things:
 
 1. A bar plot
 2. Or a bar plot that shows the distribution of values
 
 For a bar plot, we can simply create with a iterator that yields a series of
-rectangle. The following code demostrates how. The function `Rectangle::margin` 
+rectangle. The following code demonstrates how. The function `Rectangle::margin` 
 is used to set a pixel based margin for the rectangle element.
 
 ```rust
@@ -157,7 +157,7 @@ Result image:
 
 ![2.8.png](../../images/2.8.png)
 
-Similary, the following code draws a vertical bar chart.
+Similarly, the following code draws a vertical bar chart.
 
 ```rust
 use plotters::prelude::*;
@@ -191,7 +191,7 @@ Result image:
 
 ![2.9.png](../../images/2.9.png)
 
-For the second type of histogram, there's a `Histograma` series type is defined for this purpose.
+For the second type of histogram, there's a `Histogram` series type is defined for this purpose.
 
 ## Time Series Chart
 
@@ -246,7 +246,7 @@ Result image:
 
 ## Customized series
 
-Plotters allows you draw abitrary types of series, even the one isn't built into the Plotters crate. 
+Plotters allows you draw arbitrary types of series, even the one isn't built into the Plotters crate. 
 Plotters uses a really simple abstraction for a data series: An iterator of drawable elements. 
 Thus if you can make your own series an iterator of drawable element, it's a valid data series and can be
 draw on a figure.
@@ -255,7 +255,7 @@ draw on a figure.
 
 
 
-## Mutiple Data Series
+## Multiple Data Series
 
 By calling `draw_series` multiple time, Plotters is able to produce the multiple series plot. 
 Thus, we don't limit the developer's ability to put different types of plot series onto the same
@@ -308,7 +308,7 @@ When you call `ChartContext::draw_series`, a result type that carries a handle t
 is returned and you can use it to add a series label to that.
 
 After you complete the data plotting, `ChartContext::configure_series_label` can be called to configure and draw
-the collections of series label. The following example demostrate how.
+the collections of series label. The following example demonstrate how.
 
 ```rust
 use plotters::prelude::*;

@@ -5,7 +5,7 @@ the mesh grid, etc. The `ChartContext` type is able to draw those component auto
 
 ## Mesh
 
-The following code demostrate how we can use `ChartContext::configure_mesh` to add a mesh
+The following code demonstrate how we can use `ChartContext::configure_mesh` to add a mesh
 to the chart.
 
 ```rust
@@ -37,7 +37,7 @@ To add axes to the plot, it requires two steps:
 1. Define the label area size when the `ChartContext` is created.
 2. Use `configure_mesh` to draw the chart components.
 
-The following code demostrates how to add axes
+The following code demonstrates how to add axes
 
 ```rust
 use plotters::prelude::*;

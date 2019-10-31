@@ -1,9 +1,9 @@
 # Getting Started
 
-Let's have a quick walkthrough on how to produce a data plot with Plotters.
+Let's have a quick walk through on how to produce a data plot with Plotters.
 This is an example that plotting the graph of a simple equation `y = sin(x)` to a PNG file.
 
-### Step 0 - Install prerequisite libraries to system
+## Step 0 - Install prerequisite libraries to system
 
 Plotters may use some library installed on your system, depends on what operating system you are using.
 
@@ -16,7 +16,7 @@ command to install them.
 
 * For Windows and OSX user: No prerequisite library is required.
 
-### Step 1 - Add dependency to `cargo.toml`
+## Step 1 - Add dependency to `cargo.toml`
 
 In order to use Plotters, add the following line to your `cargo.tmol`
 
@@ -57,7 +57,7 @@ fn main() {
 }
 ```
 
-### Step 3 - Build and run
+## Step 3 - Build and run
 
 Use the following command to build and run the example
 
