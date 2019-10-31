@@ -13,7 +13,8 @@ The following code demostrate how to draw a line series with Plotters
 use plotters::prelude::*;
 
 fn main() {
-	let root_area = BitMapBackend::new("images/2.5.png", (600, 400)).into_drawing_area();
+	let root_area = BitMapBackend::new("images/2.5.png", (600, 400))
+		.into_drawing_area();
 	root_area.fill(&WHITE).unwrap();
 
 	let mut ctx = ChartBuilder::on(&root_area)
@@ -46,7 +47,8 @@ In this example, we assume there are `DATA1` and `DATA2` defined. See the source
 use plotters::prelude::*;
 
 fn main() {
-    let root_area = BitMapBackend::new("images/2.6.png", (600, 400)).into_drawing_area();
+    let root_area = BitMapBackend::new("images/2.6.png", (600, 400))
+		.into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
@@ -82,7 +84,8 @@ The following demo demostrate how we can draw an area chart.
 use plotters::prelude::*;
 
 fn main() {
-    let root_area = BitMapBackend::new("images/2.7.png", (600, 400)).into_drawing_area();
+    let root_area = BitMapBackend::new("images/2.7.png", (600, 400))
+		.into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
@@ -126,7 +129,8 @@ is used to set a pixel based margin for the rectangle element.
 use plotters::prelude::*;
 
 fn main() {
-    let root_area = BitMapBackend::new("images/2.8.png", (600, 400)).into_drawing_area();
+    let root_area = BitMapBackend::new("images/2.8.png", (600, 400))
+		.into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
@@ -159,7 +163,8 @@ Similary, the following code draws a vertical bar chart.
 use plotters::prelude::*;
 
 fn main() {
-    let root_area = BitMapBackend::new("images/2.9.png", (600, 400)).into_drawing_area();
+    let root_area = BitMapBackend::new("images/2.9.png", (600, 400))
+		.into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
@@ -201,7 +206,8 @@ use plotters::prelude::*;
 use chrono::{Utc, TimeZone};
 
 fn main() {
-	let root_area = BitMapBackend::new("images/2.11.png", (600, 400)).into_drawing_area();
+	let root_area = BitMapBackend::new("images/2.11.png", (600, 400))
+		.into_drawing_area();
 	root_area.fill(&WHITE).unwrap();
 
 	let start_date = Utc.ymd(2019, 10, 1);
@@ -259,7 +265,8 @@ image. The following example shows plotting a histogram along with a line plot.
 use plotters::prelude::*;
 
 fn main() {
-    let root_area = BitMapBackend::new("images/2.10.png", (600, 400)).into_drawing_area();
+    let root_area = BitMapBackend::new("images/2.10.png", (600, 400))
+		.into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
@@ -295,3 +302,50 @@ Result image:
 ![2.10.png](../../images/2.10.png)
 
 ## Legend
+
+Plotters allows user add legend on the figure. Specifically, Plotters called the it "series label".
+When you call `ChartContext::draw_series`, a result type that carries a handle to a series annotation 
+is returned and you can use it to add a series label to that.
+
+After you complete the data plotting, `ChartContext::configure_series_label` can be called to configure and draw
+the collections of series label. The following example demostrate how.
+
+```rust
+use plotters::prelude::*;
+
+fn main() {
+    let root_area = BitMapBackend::new("images/2.12.png", (600, 400))
+		.into_drawing_area();
+    root_area.fill(&WHITE).unwrap();
+
+    let mut ctx = ChartBuilder::on(&root_area)
+        .set_label_area_size(LabelAreaPosition::Left, 40)
+        .set_label_area_size(LabelAreaPosition::Bottom, 40)
+        .caption("Legend", ("Arial", 40))
+        .build_ranged(-4.0..4.0, -1.2..1.2)
+        .unwrap();
+
+    ctx.configure_mesh().draw().unwrap();
+
+    let x_kps: Vec<_> = (-80..80).map(|x| x as f64 / 20.0).collect();
+    ctx.draw_series(LineSeries::new(x_kps.iter().map(|x| (*x, x.sin())), &RED))
+        .unwrap()
+        .label("Sine")
+        .legend(|(x, y)| Path::new(vec![(x, y), (x + 20, y)], &RED));
+
+    ctx.draw_series(LineSeries::new(x_kps.iter().map(|x| (*x, x.cos())), &BLUE))
+        .unwrap()
+        .label("Cosine")
+        .legend(|(x, y)| Path::new(vec![(x, y), (x + 20, y)], &BLUE));
+
+    ctx.configure_series_labels()
+        .border_style(&BLACK)
+        .background_style(&WHITE.mix(0.8))
+        .draw()
+        .unwrap();
+}
+```
+
+Result image:
+
+![2.12.png](../../images/2.12.png)

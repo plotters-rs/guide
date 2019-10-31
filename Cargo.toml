@@ -53,3 +53,7 @@ path = "code/2_10_mixed.rs"
 [[bin]]
 name = "2_11_timeseries"
 path = "code/2_11_timeseries.rs"
+
+[[bin]]
+name = "2_12_legend"
+path = "code/2_12_legend.rs"
