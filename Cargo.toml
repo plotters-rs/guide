@@ -1,5 +1,5 @@
 [package]
-name = "plotters-book"
+name = "guide"
 version = "0.1.0"
 authors = ["Hao Hou <haohou302@gmail.com>"]
 edition = "2018"
@@ -7,53 +7,9 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-plotters = "0.2.10"
-chrono = "0.4.9"
+pulldown-cmark = "0.8.0"
+walkdir = "2.3.1"
 
-[[bin]]
-name = "2_1_chart_context"
-path = "code/2_1_chart_context.rs"
-
-[[bin]]
-name = "2_2_mesh"
-path = "code/2_2_mesh.rs"
-
-[[bin]]
-name = "2_3_axis"
-path = "code/2_3_axis.rs"
-
-[[bin]]
-name = "2_4_title"
-path = "code/2_4_title.rs"
-
-[[bin]]
-name = "2_5_lineplot"
-path = "code/2_5_line_plot.rs"
-
-[[bin]]
-name = "2_6_scatter"
-path = "code/2_6_scatter.rs"
-
-[[bin]]
-name = "2_7_area_chart"
-path = "code/2_7_area_chart.rs"
-
-[[bin]]
-name = "2_8_bar_chart"
-path = "code/2_8_bar_chart.rs"
-
-[[bin]]
-name = "2_9_vbar"
-path = "code/2_9_vbar.rs"
-
-[[bin]]
-name = "2_10_mixed"
-path = "code/2_10_mixed.rs"
-
-[[bin]]
-name = "2_11_timeseries"
-path = "code/2_11_timeseries.rs"
-
-[[bin]]
-name = "2_12_legend"
-path = "code/2_12_legend.rs"
+[dev-dependencies]
+plotters = "0.3.0"
+chrono = "0.4.15"

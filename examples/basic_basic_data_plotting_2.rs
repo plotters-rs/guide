@@ -1,7 +1,8 @@
 use plotters::prelude::*;
 
 fn main() {
-    let root_area = BitMapBackend::new("images/2.6.png", (600, 400)).into_drawing_area();
+    let root_area = BitMapBackend::new("images/2.6.png", (600, 400))
+		.into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
@@ -23,7 +24,6 @@ fn main() {
     ctx.draw_series(DATA2.into_iter().map(|point| Circle::new(*point, 5, &RED)))
         .unwrap();
 }
-
 const DATA1: [(i32, i32); 30] = [
     (-3, 1),
     (-2, 3),
@@ -89,3 +89,6 @@ const DATA2: [(i32, i32); 30] = [
     (28, 47),
     (28, 50),
 ];
+
+#[test]
+fn etnry_point() { main(); } 

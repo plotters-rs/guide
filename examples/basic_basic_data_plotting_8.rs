@@ -1,7 +1,8 @@
 use plotters::prelude::*;
 
 fn main() {
-    let root_area = BitMapBackend::new("images/2.12.png", (600, 400)).into_drawing_area();
+    let root_area = BitMapBackend::new("images/2.12.png", (600, 400))
+		.into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
@@ -30,3 +31,6 @@ fn main() {
         .draw()
         .unwrap();
 }
+
+#[test]
+fn etnry_point() { main(); } 

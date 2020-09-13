@@ -1,7 +1,8 @@
 use plotters::prelude::*;
 
 fn main() {
-    let root_area = BitMapBackend::new("images/2.7.png", (600, 400)).into_drawing_area();
+    let root_area = BitMapBackend::new("images/2.7.png", (600, 400))
+		.into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
@@ -13,15 +14,17 @@ fn main() {
 
     ctx.configure_mesh().draw().unwrap();
 
-    let data = [25, 37, 15, 32, 45, 33, 32, 10, 29, 0, 21];
+	let data = [25, 37, 15, 32, 45, 33, 32, 10, 29, 0, 21];
 
     ctx.draw_series(
-        AreaSeries::new(
+		AreaSeries::new(
             (0..).zip(data.iter().map(|x| *x)), // The data iter
             0,                                  // Baseline
-            &RED.mix(0.2),                      // Make the series opac
-        )
-        .border_style(&RED), // Make a brighter border
+			&RED.mix(0.2) // Make the series opac
+		).border_style(&RED) // Make a brighter border
     )
     .unwrap();
 }
+
+#[test]
+fn etnry_point() { main(); } 

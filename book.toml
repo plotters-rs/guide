@@ -2,5 +2,5 @@
 authors = ["Hao Hou"]
 language = "en"
 multilingual = false
-src = "src"
+src = "markdown"
 title = "Plotter Developer's Guide"
