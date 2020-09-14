@@ -332,7 +332,8 @@ name = "guide"
 version = "0.1.0"
 dependencies = [
  "chrono",
- "plotters",
+ "plotters 0.3.0 (git+https://github.com/38/plotters.git)",
+ "plotters 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "pulldown-cmark",
  "walkdir",
 ]
@@ -520,6 +521,25 @@ name = "pkg-config"
 version = "0.3.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d36492546b6af1463394d46f0c834346f31548646f6ba10849802c9c9a27ac33"
+
+[[package]]
+name = "plotters"
+version = "0.3.0"
+source = "git+https://github.com/38/plotters.git#6da6db41b996bea35ccf9cd71f1b0eed9e224dd8"
+dependencies = [
+ "chrono",
+ "font-kit",
+ "image 0.23.9",
+ "lazy_static",
+ "num-traits",
+ "pathfinder_geometry",
+ "plotters-backend",
+ "plotters-bitmap",
+ "plotters-svg",
+ "ttf-parser",
+ "wasm-bindgen",
+ "web-sys",
+]
 
 [[package]]
 name = "plotters"
@@ -754,6 +774,12 @@ dependencies = [
  "wasi 0.10.0+wasi-snapshot-preview1",
  "winapi",
 ]
+
+[[package]]
+name = "ttf-parser"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d973cfa0e6124166b50a1105a67c85de40bbc625082f35c0f56f84cb1fb0a827"
 
 [[package]]
 name = "unicase"

@@ -16,11 +16,13 @@ Plotters can target wide range of backends and supports both static and realtime
 
 Please go to [Github repository](https://github.com/plotters-rs/guide). All the sample code is under `examples`
 directory. 
-To try it yourself, please clone the book repo and use the following command to run examples:
+To try it yourself, please clone the book repo and use the following command to run all examples:
 
 ```bash
-cargo run --example <example-name>
+cargo test 
 ```
+
+And all the example code will be automatically extracted to the `src` directory.
 
 ### FAQ List
 

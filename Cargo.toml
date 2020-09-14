@@ -12,4 +12,5 @@ walkdir = "2.3.1"
 
 [dependencies]
 plotters = "0.3.0"
+plotters-nightly = { git="https://github.com/38/plotters.git", package = "plotters" }
 chrono = "0.4.15"

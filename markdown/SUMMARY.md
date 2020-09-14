@@ -7,6 +7,7 @@
   - [Draw figure components](./basic/chart_components.md)
   - [Basic data plotting](./basic/basic_data_plotting.md)
   - [Multipanel figures](./basic/multipanel.md)
+  - [Draw 3D plots](./basic/draw_3d_plots.md)
   - [Animation and realtime rendering](./basic/animate.md)
 - [Tweaking the figure](./tweak/overview.md)
   - [Layout tweak](./tweak/layout.md) 

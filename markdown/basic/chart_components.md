@@ -83,7 +83,7 @@ fn main() {
     .caption("Figure Sample", ("Arial", 30))
     .set_label_area_size(LabelAreaPosition::Left, 40)
     .set_label_area_size(LabelAreaPosition::Bottom, 40)
-    .build_ranged(0..100, 0..100)
+    .build_cartesian_2d(0..100, 0..100)
     .unwrap();
 
   ctx.configure_mesh().draw().unwrap();

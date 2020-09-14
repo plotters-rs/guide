@@ -44,7 +44,7 @@ fn main() {
     let root_drawing_area = BitMapBackend::new("images/0.1.png", (1024, 768))
         .into_drawing_area();
 
-    root_drawing_area.fill(&WHITE);
+    root_drawing_area.fill(&WHITE).unwrap();
 
     let mut chart = ChartBuilder::on(&root_drawing_area)
         .build_cartesian_2d(-3.14..3.14, -1.2..1.2)
