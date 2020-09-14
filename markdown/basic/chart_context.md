@@ -13,7 +13,7 @@ The following code shows how to make a chart context that is using a
 use plotters::prelude::*;
 
 fn main() {
-  let drawing_area = BitMapBackend::new("images/2.0", (1024, 768))
+  let drawing_area = BitMapBackend::new("images/2.0.png", (1024, 768))
     .into_drawing_area();
   
   let _chart = ChartBuilder::on(&drawing_area)

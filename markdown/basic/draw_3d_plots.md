@@ -57,7 +57,7 @@ fn main() {
 Next, we are going to deomonstrate Plotters' 3D elements. We use the `Cubiod` 3D element to build a 3D bar chart. 
 
 ```rust
-use plotters_nightly::prelude::*;
+use plotters_master::prelude::*;
 fn main() {
     let root = BitMapBackend::new("images/3d-bar.png", (640, 480)).into_drawing_area();
 
@@ -136,7 +136,7 @@ fn main() {
 **Note: This feature is only avaiable in development version**
 
 ```rust
-use plotters_nightly::prelude::*;
+use plotters_master::prelude::*;
 fn main() {
     let root = BitMapBackend::new("images/3d-surface-series.png", (640, 480)).into_drawing_area();
 
