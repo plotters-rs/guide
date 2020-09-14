@@ -6,10 +6,10 @@ edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
+[build-dependencies]
 pulldown-cmark = "0.8.0"
 walkdir = "2.3.1"
 
-[dev-dependencies]
+[dependencies]
 plotters = "0.3.0"
 chrono = "0.4.15"

@@ -10,7 +10,7 @@ book/*
 **/*.rs.bk
 cargo.lock
 images/*
-
+src/*.rs
 
 #Added by cargo
 #

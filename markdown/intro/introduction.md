@@ -26,8 +26,8 @@ cargo run --example <example-name>
 
 1. Why the example just exits without any figure popping up?
 
-You should be table to find the output under `images` directory under the user's guide repository. 
-The filename for the output is the defined in the example code.
+    You should be table to find the output under `images` directory under the user's guide repository. 
+    The filename for the output is the defined in the example code.
 
 ## API Docs
 

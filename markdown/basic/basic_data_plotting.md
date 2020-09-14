@@ -1,9 +1,6 @@
 # Basic data plotting
 
-In this section, let's use Plotters to produce different types of Plotting.
-Generally speaking, the API `ChartContext::draw_series` provides the functionality
-to draw any types of chart. In the following parts, let's discuss how to use it to 
-render different types of plots.
+In this section, let's use Plotters to produce different types of Plotting. Generally speaking, the API `ChartContext::draw_series` provides the functionality to draw any types of chart. In the following parts, let's discuss how to use it to render different types of plots.
 
 ## Line series
 
@@ -13,22 +10,22 @@ The following code demonstrate how to draw a line series with Plotters
 use plotters::prelude::*;
 
 fn main() {
-	let root_area = BitMapBackend::new("images/2.5.png", (600, 400))
-		.into_drawing_area();
-	root_area.fill(&WHITE).unwrap();
+  let root_area = BitMapBackend::new("images/2.5.png", (600, 400))
+    .into_drawing_area();
+  root_area.fill(&WHITE).unwrap();
 
-	let mut ctx = ChartBuilder::on(&root_area)
-		.set_label_area_size(LabelAreaPosition::Left, 40)
-		.set_label_area_size(LabelAreaPosition::Bottom, 40)
-		.caption("Line Plot Demo", ("Arial", 40))
-		.build_ranged(-10..10, 0..100)
-		.unwrap();
+  let mut ctx = ChartBuilder::on(&root_area)
+    .set_label_area_size(LabelAreaPosition::Left, 40)
+    .set_label_area_size(LabelAreaPosition::Bottom, 40)
+    .caption("Line Plot Demo", ("sans-serif", 40))
+    .build_cartesian_2d(-10..10, 0..100)
+    .unwrap();
 
-	ctx.configure_mesh().draw().unwrap();
+  ctx.configure_mesh().draw().unwrap();
 
-	ctx.draw_series(
-		LineSeries::new((-10..=10).map(|x| (x, x* x)), &GREEN)
-	).unwrap();
+  ctx.draw_series(
+    LineSeries::new((-10..=10).map(|x| (x, x* x)), &GREEN)
+  ).unwrap();
 }
 ```
 
@@ -38,24 +35,21 @@ It should produce the following image
 
 ## Scatter Plot
 
-The following code demonstrate how we can crate a scatter plot and use different pointing elements.
-In the example, we use `Circle` and `TriangleMarker` pointing element for two different series.
-
-In this example, we assume there are `DATA1` and `DATA2` defined. See the source for the details.
+The following code demonstrate how we can crate a scatter plot and use different pointing elements. In the example, we use `Circle` and `TriangleMarker` pointing element for two different series.
 
 ```rust
 use plotters::prelude::*;
 
 fn main() {
     let root_area = BitMapBackend::new("images/2.6.png", (600, 400))
-		.into_drawing_area();
+    .into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
         .set_label_area_size(LabelAreaPosition::Left, 40)
         .set_label_area_size(LabelAreaPosition::Bottom, 40)
-        .caption("Scatter Demo", ("Arial", 40))
-        .build_ranged(-10..50, -10..50)
+        .caption("Scatter Demo", ("sans-serif", 40))
+        .build_cartesian_2d(-10..50, -10..50)
         .unwrap();
 
     ctx.configure_mesh().draw().unwrap();
@@ -150,26 +144,26 @@ use plotters::prelude::*;
 
 fn main() {
     let root_area = BitMapBackend::new("images/2.7.png", (600, 400))
-		.into_drawing_area();
+    .into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
         .set_label_area_size(LabelAreaPosition::Left, 40)
         .set_label_area_size(LabelAreaPosition::Bottom, 40)
-        .caption("Scatter Demo", ("Arial", 40))
-        .build_ranged(0..10, 0..50)
+        .caption("Scatter Demo", ("sans-serif", 40))
+        .build_cartesian_2d(0..10, 0..50)
         .unwrap();
 
     ctx.configure_mesh().draw().unwrap();
 
-	let data = [25, 37, 15, 32, 45, 33, 32, 10, 29, 0, 21];
+  let data = [25, 37, 15, 32, 45, 33, 32, 10, 29, 0, 21];
 
     ctx.draw_series(
-		AreaSeries::new(
-            (0..).zip(data.iter().map(|x| *x)), // The data iter
-            0,                                  // Baseline
-			&RED.mix(0.2) // Make the series opac
-		).border_style(&RED) // Make a brighter border
+      AreaSeries::new(
+        (0..).zip(data.iter().map(|x| *x)), // The data iter
+        0,                                  // Baseline
+        &RED.mix(0.2) // Make the series opac
+      ).border_style(&RED) // Make a brighter border
     )
     .unwrap();
 }
@@ -186,31 +180,33 @@ In practice, the histogram can be two things:
 1. A bar plot
 2. Or a bar plot that shows the distribution of values
 
-For a bar plot, we can simply create with a iterator that yields a series of
-rectangle. The following code demonstrates how. The function `Rectangle::margin` 
-is used to set a pixel based margin for the rectangle element.
+For a bar plot, we can simply create with a iterator that yields a series of rectangle. The following code demonstrates how. The function `Rectangle::margin` is used to set a pixel based margin for the rectangle element.
+
+One note here is we used tweaked the coordinate a little bit, we make the X coordinate segmented, so that the axis labels presents in the middle of the value segments. In plotters this is called a coordinate combinator, we are going to discuss the combinators in detail in the next chapter.
 
 ```rust
 use plotters::prelude::*;
 
 fn main() {
     let root_area = BitMapBackend::new("images/2.8.png", (600, 400))
-		.into_drawing_area();
+    .into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
         .set_label_area_size(LabelAreaPosition::Left, 40)
         .set_label_area_size(LabelAreaPosition::Bottom, 40)
-        .caption("Bar Demo", ("Arial", 40))
-        .build_ranged(0..10, 0..50)
+        .caption("Bar Demo", ("sans-serif", 40))
+        .build_cartesian_2d((0..10).into_segmented(), 0..50)
         .unwrap();
 
     ctx.configure_mesh().draw().unwrap();
 
-    let data = [25, 37, 15, 32, 45, 33, 32, 10, 0, 21];
+    let data = [25, 37, 15, 32, 45, 33, 32, 10, 0, 21, 5];
 
     ctx.draw_series((0..).zip(data.iter()).map(|(x, y)| {
-        let mut bar = Rectangle::new([(x, 0), (x + 1, *y)], RED.filled());
+        let x0 = SegmentValue::Exact(x);
+        let x1 = SegmentValue::Exact(x + 1);
+        let mut bar = Rectangle::new([(x0, 0), (x1, *y)], RED.filled());
         bar.set_margin(0, 0, 5, 5);
         bar
     }))
@@ -229,22 +225,25 @@ use plotters::prelude::*;
 
 fn main() {
     let root_area = BitMapBackend::new("images/2.9.png", (600, 400))
-		.into_drawing_area();
+    .into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
         .set_label_area_size(LabelAreaPosition::Left, 40)
         .set_label_area_size(LabelAreaPosition::Bottom, 40)
-        .caption("Bar Demo", ("Arial", 40))
-        .build_ranged(0..50, 0..10)
+        .caption("Bar Demo", ("sans-serif", 40))
+        .build_cartesian_2d(0..50, (0..10).into_segmented())
         .unwrap();
 
     ctx.configure_mesh().draw().unwrap();
 
-    let data = [25, 37, 15, 32, 45, 33, 32, 10, 0, 21];
+    let data = [25, 37, 15, 32, 45, 33, 32, 10, 0, 21, 5];
 
     ctx.draw_series((0..).zip(data.iter()).map(|(y, x)| {
-        let mut bar = Rectangle::new([(0, y), (*x, y + 1)], GREEN.filled());
+        let mut bar = Rectangle::new([
+            (0, SegmentValue::Exact(y)), 
+            (*x, SegmentValue::Exact(y + 1))
+        ], GREEN.filled());
         bar.set_margin(5, 5, 0, 0);
         bar
     }))
@@ -257,6 +256,48 @@ Result image:
 ![2.9.png](../../images/2.9.png)
 
 For the second type of histogram, there's a `Histogram` series type is defined for this purpose.
+
+### Visualize distribution
+
+Now we are going to demonstrate how we can use the `Histogram` series to visualize the distribution of the input data. 
+
+```rust
+use plotters::prelude::*;
+
+fn is_prime(n: i32) -> bool {
+    for i in 2..n {
+        if n % i == 0 {
+            return false;
+        }
+    }
+    true
+}
+
+fn main() {
+    let root_area = BitMapBackend::new("images/2.13.png", (600, 400))
+    .into_drawing_area();
+    root_area.fill(&WHITE).unwrap();
+
+    let mut ctx = ChartBuilder::on(&root_area)
+        .set_label_area_size(LabelAreaPosition::Left, 40)
+        .set_label_area_size(LabelAreaPosition::Bottom, 40)
+        .caption("Prime Distribution", ("sans-serif", 40))
+        .build_cartesian_2d([true, false].into_segmented(), 0..50)
+        .unwrap();
+
+    ctx.configure_mesh().draw().unwrap();
+
+    let prim:Vec<_> = (2..50).map(is_prime).collect();
+
+    ctx.draw_series(
+        Histogram::vertical(&ctx)
+        .margin(100)
+        .data(prim.iter().map(|x| (x, 1)))
+    ).unwrap();
+}
+```
+
+![2.13.png](../../images/2.13.png)
 
 ## Time Series Chart
 
@@ -271,18 +312,18 @@ use plotters::prelude::*;
 use chrono::{Utc, TimeZone};
 
 fn main() {
-	let root_area = BitMapBackend::new("images/2.11.png", (600, 400))
-		.into_drawing_area();
-	root_area.fill(&WHITE).unwrap();
+  let root_area = BitMapBackend::new("images/2.11.png", (600, 400))
+    .into_drawing_area();
+  root_area.fill(&WHITE).unwrap();
 
-	let start_date = Utc.ymd(2019, 10, 1);
-	let end_date = Utc.ymd(2019, 10, 18);
+  let start_date = Utc.ymd(2019, 10, 1);
+  let end_date = Utc.ymd(2019, 10, 18);
 
     let mut ctx = ChartBuilder::on(&root_area)
         .set_label_area_size(LabelAreaPosition::Left, 40)
         .set_label_area_size(LabelAreaPosition::Bottom, 40)
-        .caption("MSFT daily close price", ("Arial", 40))
-        .build_ranged(start_date..end_date, 130.0..145.0)
+        .caption("MSFT daily close price", ("sans-serif", 40))
+        .build_cartesian_2d(start_date..end_date, 130.0..145.0)
         .unwrap();
     
     ctx.configure_mesh().draw().unwrap();
@@ -311,34 +352,26 @@ Result image:
 
 ## Customized series
 
-Plotters allows you draw arbitrary types of series, even the one isn't built into the Plotters crate. 
-Plotters uses a really simple abstraction for a data series: An iterator of drawable elements. 
-Thus if you can make your own series an iterator of drawable element, it's a valid data series and can be
+Plotters allows you draw arbitrary types of series, even the one isn't built into the Plotters crate. Plotters uses a really simple abstraction for a data series: An iterator of drawable elements. Thus if you can make your own series an iterator of drawable element, it's a valid data series and can be
 draw on a figure.
-
-
-
-
 
 ## Multiple Data Series
 
-By calling `draw_series` multiple time, Plotters is able to produce the multiple series plot. 
-Thus, we don't limit the developer's ability to put different types of plot series onto the same
-image. The following example shows plotting a histogram along with a line plot.
+By calling `draw_series` multiple time, Plotters is able to produce the multiple series plot. Thus, we don't limit the developer's ability to put different types of plot series onto the same plot. The following example shows plotting a histogram along with a line plot.
 
 ```rust
 use plotters::prelude::*;
 
 fn main() {
     let root_area = BitMapBackend::new("images/2.10.png", (600, 400))
-		.into_drawing_area();
+    .into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
         .set_label_area_size(LabelAreaPosition::Left, 40)
         .set_label_area_size(LabelAreaPosition::Bottom, 40)
-        .caption("Histo + Line", ("Arial", 40))
-        .build_ranged(0..10, 0..80)
+        .caption("Histo + Line", ("sans-serif", 40))
+        .build_cartesian_2d(0..10, 0..80)
         .unwrap();
 
     ctx.configure_mesh().draw().unwrap();
@@ -368,26 +401,21 @@ Result image:
 
 ## Legend
 
-Plotters allows user add legend on the figure. Specifically, Plotters called the it "series label".
-When you call `ChartContext::draw_series`, a result type that carries a handle to a series annotation 
-is returned and you can use it to add a series label to that.
-
-After you complete the data plotting, `ChartContext::configure_series_label` can be called to configure and draw
-the collections of series label. The following example demonstrate how.
+Plotters allows user add legend on the figure. Specifically, Plotters called the it "series label". When you call `ChartContext::draw_series`, a result type that carries a handle to a series annotation is returned and you can use it to add a series label to that. After you complete the data plotting, `ChartContext::configure_series_label` can be called to configure and draw the collections of series label. The following example demonstrate how.
 
 ```rust
 use plotters::prelude::*;
 
 fn main() {
     let root_area = BitMapBackend::new("images/2.12.png", (600, 400))
-		.into_drawing_area();
+    .into_drawing_area();
     root_area.fill(&WHITE).unwrap();
 
     let mut ctx = ChartBuilder::on(&root_area)
         .set_label_area_size(LabelAreaPosition::Left, 40)
         .set_label_area_size(LabelAreaPosition::Bottom, 40)
-        .caption("Legend", ("Arial", 40))
-        .build_ranged(-4.0..4.0, -1.2..1.2)
+        .caption("Legend", ("sans-serif", 40))
+        .build_cartesian_2d(-4.0..4.0, -1.2..1.2)
         .unwrap();
 
     ctx.configure_mesh().draw().unwrap();
@@ -396,12 +424,12 @@ fn main() {
     ctx.draw_series(LineSeries::new(x_kps.iter().map(|x| (*x, x.sin())), &RED))
         .unwrap()
         .label("Sine")
-        .legend(|(x, y)| Path::new(vec![(x, y), (x + 20, y)], &RED));
+        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &RED));
 
     ctx.draw_series(LineSeries::new(x_kps.iter().map(|x| (*x, x.cos())), &BLUE))
         .unwrap()
         .label("Cosine")
-        .legend(|(x, y)| Path::new(vec![(x, y), (x + 20, y)], &BLUE));
+        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &BLUE));
 
     ctx.configure_series_labels()
         .border_style(&BLACK)
