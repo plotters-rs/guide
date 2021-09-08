@@ -21,6 +21,7 @@ fn main() {
 
   ctx.configure_mesh().draw().unwrap();
 
+  root_drawing_area.present().expect("Cannot create result");
 }
 ```
 
@@ -56,6 +57,7 @@ fn main() {
 
   ctx.configure_mesh().draw().unwrap();
 
+  root_drawing_area.present().expect("Cannot create result");
 }
 ```
 
@@ -88,6 +90,7 @@ fn main() {
 
   ctx.configure_mesh().draw().unwrap();
 
+  root_drawing_area.present().expect("Cannot create result");
 }
 ```
 
