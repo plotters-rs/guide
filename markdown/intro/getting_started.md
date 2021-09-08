@@ -54,6 +54,8 @@ fn main() {
         (-314..314).map(|x| x as f64 / 100.0).map(|x| (x, x.sin())),
         &RED
     )).unwrap();
+
+    root_drawing_area.present().expect("Cannot create result");
 }
 ```
 
