@@ -1,8 +1,8 @@
 # Define chart context
 
-As we preivously mentioned, Plotters is drawing library. In theory, you should be able to draw any data plot based on the Plotters drawing API. On the top of drawing API, we provide the chart context, which creates a friendly environment for data visualization.
+As we previously mentioned, Plotters is a drawing library. In theory, you should be able to draw any data plot based on the Plotters drawing API. On the top of drawing API, we provide the chart context, which creates a friendly environment for data visualization.
 
-## Create a chart context from a drwaing area
+## Create a chart context from a drawing area
 
 `ChartBuilder` is the builder type to create a chart context.
 
