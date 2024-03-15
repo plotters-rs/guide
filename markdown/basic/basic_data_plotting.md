@@ -1,10 +1,10 @@
 # Basic data plotting
 
-In this section, let's use Plotters to produce different types of Plotting. Generally speaking, the API `ChartContext::draw_series` provides the functionality to draw any types of chart. In the following parts, let's discuss how to use it to render different types of plots.
+In this section, we will use Plotters to produce different types of plots. The `ChartContext::draw_series` API provides the functionality to draw different chart types. In the following sections, we will explore some of the possibilities.
 
 ## Line series
 
-The following code demonstrate how to draw a line series with Plotters
+The following code demonstrates how to draw a line series with Plotters
 
 ```rust
 use plotters::prelude::*;
@@ -85,7 +85,7 @@ fn main() {
     let mut ctx = ChartBuilder::on(&root_area)
         .set_label_area_size(LabelAreaPosition::Left, 40)
         .set_label_area_size(LabelAreaPosition::Bottom, 40)
-        .caption("Scatter Demo", ("sans-serif", 40))
+        .caption("Area Chart Demo", ("sans-serif", 40))
         .build_cartesian_2d(0..10, 0..50)
         .unwrap();
 
@@ -117,7 +117,7 @@ In practice, the histogram can be two things:
 
 For a bar plot, we can simply create with a iterator that yields a series of rectangle. The following code demonstrates how. The function `Rectangle::margin` is used to set a pixel based margin for the rectangle element.
 
-One note here is we used tweaked the coordinate a little bit, we make the X coordinate segmented, so that the axis labels presents in the middle of the value segments. In plotters this is called a coordinate combinator, we are going to discuss the combinators in detail in the next chapter.
+One note here is that we tweaked the coordinate a bit, we segmented the X coordinate, so that the axis labels center align with the segments. In plotters this is called a coordinate combinator, we are going to discuss the combinators in detail in the next chapter.
 
 ```rust
 use plotters::prelude::*;
@@ -284,8 +284,7 @@ Result image:
 
 ## Customized series
 
-Plotters allows you draw arbitrary types of series, even the one isn't built into the Plotters crate. Plotters uses a really simple abstraction for a data series: An iterator of drawable elements. Thus if you can make your own series an iterator of drawable element, it's a valid data series and can be
-draw on a figure.
+Plotters allows you to draw arbitrary types of series, even ones not built into the Plotters crate. Plotters uses a really simple abstraction for a data series: An iterator of drawable elements. Thus if you can make your own series an iterator of drawable elements, it's a valid data series and can be draw on a figure.
 
 ## Multiple Data Series
 
@@ -333,7 +332,7 @@ Result image:
 
 ## Legend
 
-Plotters allows user add legend on the figure. Specifically, Plotters called the it "series label". When you call `ChartContext::draw_series`, a result type that carries a handle to a series annotation is returned and you can use it to add a series label to that. After you complete the data plotting, `ChartContext::configure_series_label` can be called to configure and draw the collections of series label. The following example demonstrate how.
+Plotters allows the user to add a legend on the figure. Specifically, Plotters calls this a "series label". When you call `ChartContext::draw_series`, a result type that carries a handle to a series annotation is returned and you can use it to add a series label. After you complete the data plotting, `ChartContext::configure_series_label` can be called to configure and draw the series labels. The following example demonstrate how.
 
 ```rust
 use plotters::prelude::*;

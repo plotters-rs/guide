@@ -2,7 +2,7 @@
 
 ## Label area size
 
-To build a chart in Plotters, you need first define the axis specification and the dimension of the label areas. When a `ChartBuilder` is created, the label area size is set to 0, which means Plotters shouldn't draw the axis and tick marks. You can tweak the label area size with `ChartBuilder::set_label_area_size`.
+To build a chart in Plotters, you first need to define the axis specification and the dimension of the label areas. When a `ChartBuilder` is created, the label area size is set to 0, which means Plotters shouldn't draw the axis and tick marks. You can tweak the label area size with `ChartBuilder::set_label_area_size`.
 
 ```rust
 use plotters::prelude::*;
@@ -34,7 +34,7 @@ fn main() {
 
 ## Floating label area
 
-Sometimes we want our axis is drawn on the top of the plot area, this can be done if you set label area size to negative.
+Sometimes we want our axis to be drawn at the top of the plot area; this can be done if we set label area size to negative.
 
 ```rust
 use plotters::prelude::*;
@@ -56,9 +56,9 @@ fn main() {
 ```
 ![label-area-size](../../images/axis-overlapping-with-plot.png)
 
-## Overlapped charts
+## Overlapping charts
 
-We have learned how to split the parent drawing area into some sub-drawing-area. But in some case, we want to intentionally set one chart on the top of another. This can be done by `DrawingArea::shirnk`. The following example demonstrates how.
+We have learned how to split the parent drawing area into sub-drawing areas. But in some cases, we want to intentionally set one chart on the top of another. This can be done by `DrawingArea::shrink`. The following example demonstrates how.
 
 ```rust
 use plotters::prelude::*;
