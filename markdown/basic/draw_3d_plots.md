@@ -4,7 +4,7 @@ Plotters also allows rendering 3D figures. Instead of using `build_cartesian_2d`
 
 ## 3D plotting environment && basic figure component 
 
-This following example demonstrate how to build a basic 3d plotting environment. Unlike 2d chart context, you need to configure `configure_axes` to build the basic component.
+This following example demonstrate how to build a basic 3D plotting environment. Unlike 2d chart context, you need to configure `configure_axes` to build the basic component.
 
 ```rust
 use plotters::prelude::*;
@@ -85,7 +85,7 @@ fn main() {
 
 ## 3D Surface
 
-We can draw 3d surface as well by drawing a series of polygon. Here's an example of how to draw a surface plot.
+We can draw a 3D surface by drawing a series of polygons. Here's an example of how to draw a surface plot.
 
 ```rust
 use plotters::prelude::*;
@@ -133,7 +133,7 @@ fn main() {
 
 ### Drawing with surface series
 
-**Note: This feature is only avaiable in development version**
+**Note: This feature is only avaiable in the development version**
 
 ```rust
 use plotters_master::prelude::*;
@@ -163,7 +163,7 @@ fn main() {
 
 ## Customize perspective matrix
 
-Plotters also allows user override the default prespective matrix, by doing so, you can zoom and rotate the 3d figure. The following example demostrate how. 
+Plotters also allows the user to override the default prespective matrix; by doing so, you can zoom and rotate the 3D figure. The following example demostrate how. 
 
 ```rust
 use plotters::prelude::*;

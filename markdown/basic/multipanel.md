@@ -2,7 +2,7 @@
 
 ## Splitting drawing areas
 
-Plotters can support multiple panel figures very easily by splitting the drawing area into sub-drawing areas. The following code demonstrate how the drawing area is splitted. 
+Plotters can support multi-panel figures by splitting the drawing area into sub-drawing areas. The following code demonstrates how.
 
 ```rust
 use plotters::prelude::*;
